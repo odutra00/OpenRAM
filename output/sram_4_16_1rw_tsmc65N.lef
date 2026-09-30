@@ -1,0 +1,206 @@
+VERSION 5.4 ;
+NAMESCASESENSITIVE ON ;
+BUSBITCHARS "[]" ;
+DIVIDERCHAR "/" ;
+UNITS
+  DATABASE MICRONS 2000 ;
+END UNITS
+MACRO sram_4_16_1rw_tsmc65N
+   CLASS BLOCK ;
+   SIZE 51.805 BY 77.23 ;
+   SYMMETRY X Y R90 ;
+   PIN din0[0]
+      DIRECTION INPUT ;
+      PORT
+         LAYER M4 ;
+         RECT  21.095 0.0 21.315 0.22 ;
+      END
+   END din0[0]
+   PIN din0[1]
+      DIRECTION INPUT ;
+      PORT
+         LAYER M4 ;
+         RECT  25.095 0.0 25.315 0.22 ;
+      END
+   END din0[1]
+   PIN din0[2]
+      DIRECTION INPUT ;
+      PORT
+         LAYER M4 ;
+         RECT  29.095 0.0 29.315 0.22 ;
+      END
+   END din0[2]
+   PIN din0[3]
+      DIRECTION INPUT ;
+      PORT
+         LAYER M4 ;
+         RECT  33.095 0.0 33.315 0.22 ;
+      END
+   END din0[3]
+   PIN addr0[0]
+      DIRECTION INPUT ;
+      PORT
+         LAYER M3 ;
+         RECT  0.0 51.31 0.22 51.53 ;
+      END
+   END addr0[0]
+   PIN addr0[1]
+      DIRECTION INPUT ;
+      PORT
+         LAYER M3 ;
+         RECT  0.0 53.64 0.22 53.86 ;
+      END
+   END addr0[1]
+   PIN addr0[2]
+      DIRECTION INPUT ;
+      PORT
+         LAYER M3 ;
+         RECT  0.0 55.44 0.22 55.66 ;
+      END
+   END addr0[2]
+   PIN addr0[3]
+      DIRECTION INPUT ;
+      PORT
+         LAYER M3 ;
+         RECT  0.0 57.24 0.22 57.46 ;
+      END
+   END addr0[3]
+   PIN csb0
+      DIRECTION INPUT ;
+      PORT
+         LAYER M3 ;
+         RECT  0.0 14.15 0.22 14.37 ;
+      END
+   END csb0
+   PIN web0
+      DIRECTION INPUT ;
+      PORT
+         LAYER M3 ;
+         RECT  0.0 15.95 0.22 16.17 ;
+      END
+   END web0
+   PIN clk0
+      DIRECTION INPUT ;
+      PORT
+         LAYER M3 ;
+         RECT  0.0 13.8 0.22 14.02 ;
+      END
+   END clk0
+   PIN dout0[0]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M3 ;
+         RECT  51.585 16.555 51.805 16.775 ;
+      END
+   END dout0[0]
+   PIN dout0[1]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M3 ;
+         RECT  51.585 16.205 51.805 16.425 ;
+      END
+   END dout0[1]
+   PIN dout0[2]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M3 ;
+         RECT  51.585 15.505 51.805 15.725 ;
+      END
+   END dout0[2]
+   PIN dout0[3]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M3 ;
+         RECT  51.585 15.855 51.805 16.075 ;
+      END
+   END dout0[3]
+   PIN vdd
+      DIRECTION INOUT ;
+      USE POWER ; 
+      SHAPE ABUTMENT ; 
+      PORT
+         LAYER M4 ;
+         RECT  0.0 0.0 0.9 77.23 ;
+         LAYER M4 ;
+         RECT  50.905 0.0 51.805 77.23 ;
+         LAYER M3 ;
+         RECT  0.0 0.0 51.805 0.9 ;
+         LAYER M3 ;
+         RECT  0.0 76.33 51.805 77.23 ;
+      END
+   END vdd
+   PIN gnd
+      DIRECTION INOUT ;
+      USE GROUND ; 
+      SHAPE ABUTMENT ; 
+      PORT
+         LAYER M4 ;
+         RECT  49.105 1.8 50.005 75.43 ;
+         LAYER M4 ;
+         RECT  1.8 1.8 2.7 75.43 ;
+         LAYER M3 ;
+         RECT  1.8 1.8 50.005 2.7 ;
+         LAYER M3 ;
+         RECT  1.8 74.53 50.005 75.43 ;
+      END
+   END gnd
+   OBS
+   LAYER  M1 ;
+      RECT  0.32 0.32 51.485 76.91 ;
+   LAYER  M2 ;
+      RECT  0.32 0.32 51.485 76.91 ;
+   LAYER  M3 ;
+      RECT  0.42 51.11 51.485 51.73 ;
+      RECT  0.32 51.73 0.42 53.44 ;
+      RECT  0.32 54.06 0.42 55.24 ;
+      RECT  0.32 55.86 0.42 57.04 ;
+      RECT  0.32 14.57 0.42 15.75 ;
+      RECT  0.32 16.37 0.42 51.11 ;
+      RECT  0.42 16.355 51.385 16.975 ;
+      RECT  0.42 16.975 51.385 51.11 ;
+      RECT  51.385 16.975 51.485 51.11 ;
+      RECT  0.32 1.1 0.42 13.6 ;
+      RECT  51.385 1.1 51.485 15.305 ;
+      RECT  0.32 57.66 0.42 76.13 ;
+      RECT  0.42 1.1 1.6 1.6 ;
+      RECT  0.42 1.6 1.6 2.9 ;
+      RECT  0.42 2.9 1.6 16.355 ;
+      RECT  1.6 1.1 50.205 1.6 ;
+      RECT  1.6 2.9 50.205 16.355 ;
+      RECT  50.205 1.1 51.385 1.6 ;
+      RECT  50.205 1.6 51.385 2.9 ;
+      RECT  50.205 2.9 51.385 16.355 ;
+      RECT  0.42 51.73 1.6 74.33 ;
+      RECT  0.42 74.33 1.6 75.63 ;
+      RECT  0.42 75.63 1.6 76.13 ;
+      RECT  1.6 51.73 50.205 74.33 ;
+      RECT  1.6 75.63 50.205 76.13 ;
+      RECT  50.205 51.73 51.485 74.33 ;
+      RECT  50.205 74.33 51.485 75.63 ;
+      RECT  50.205 75.63 51.485 76.13 ;
+   LAYER  M4 ;
+      RECT  20.895 0.42 21.515 76.91 ;
+      RECT  21.515 0.32 24.895 0.42 ;
+      RECT  25.515 0.32 28.895 0.42 ;
+      RECT  29.515 0.32 32.895 0.42 ;
+      RECT  1.1 0.32 20.895 0.42 ;
+      RECT  33.515 0.32 50.705 0.42 ;
+      RECT  21.515 0.42 48.905 1.6 ;
+      RECT  21.515 1.6 48.905 75.63 ;
+      RECT  21.515 75.63 48.905 76.91 ;
+      RECT  48.905 0.42 50.205 1.6 ;
+      RECT  48.905 75.63 50.205 76.91 ;
+      RECT  50.205 0.42 50.705 1.6 ;
+      RECT  50.205 1.6 50.705 75.63 ;
+      RECT  50.205 75.63 50.705 76.91 ;
+      RECT  1.1 0.42 1.6 1.6 ;
+      RECT  1.1 1.6 1.6 75.63 ;
+      RECT  1.1 75.63 1.6 76.91 ;
+      RECT  1.6 0.42 2.9 1.6 ;
+      RECT  1.6 75.63 2.9 76.91 ;
+      RECT  2.9 0.42 20.895 1.6 ;
+      RECT  2.9 1.6 20.895 75.63 ;
+      RECT  2.9 75.63 20.895 76.91 ;
+   END
+END    sram_4_16_1rw_tsmc65N
+END    LIBRARY

@@ -454,10 +454,10 @@ class Gds2writer:
             idBits=b'\x2A\x02'
             nodeType = struct.pack(">h",thisNode.nodeType)
             self.writeRecord(idBits+nodeType)
-        if(thisText.coordinates!=""):
+        if(thisNode.coordinates!=""):
             idBits=b'\x10\x03' #XY Data Points
             coordinateRecord = idBits
-            for coordinate in thisText.coordinates:
+            for coordinate in thisNode.coordinates:
                 x=struct.pack(">i",int(coordinate[0]))
                 y=struct.pack(">i",int(coordinate[1]))
                 coordinateRecord+=x

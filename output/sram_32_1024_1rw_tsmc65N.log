@@ -1,0 +1,62 @@
+[2026-09-28 17:29:43.933042] |==============================================================================|
+[2026-09-28 17:29:43.933425] |=========                      OpenRAM v1.2.49                       =========|
+[2026-09-28 17:29:43.933533] |=========                                                            =========|
+[2026-09-28 17:29:43.933616] |=========               VLSI Design and Automation Lab               =========|
+[2026-09-28 17:29:43.933693] |=========        Computer Science and Engineering Department         =========|
+[2026-09-28 17:29:43.933788] |=========            University of California Santa Cruz             =========|
+[2026-09-28 17:29:43.933877] |=========                                                            =========|
+[2026-09-28 17:29:43.933955] |=========          Usage help: openram-user-group@ucsc.edu           =========|
+[2026-09-28 17:29:43.934024] |=========        Development help: openram-dev-group@ucsc.edu        =========|
+[2026-09-28 17:29:43.934091] |=========                See LICENSE for license info                =========|
+[2026-09-28 17:29:43.934158] |==============================================================================|
+[2026-09-28 17:29:43.934243] ** Start: 09/28/2026 17:29:43
+[2026-09-28 17:29:43.934320] Technology: tsmc65N
+[2026-09-28 17:29:43.934393] Total size: 32768 bits
+[2026-09-28 17:29:43.934466] Word size: 32
+Words: 1024
+Banks: 1
+[2026-09-28 17:29:43.934538] RW ports: 1
+R-only ports: 0
+W-only ports: 0
+[2026-09-28 17:29:43.934607] DRC/LVS/PEX is only run on the top-level design to save run-time (inline_lvsdrc=True to do inline checking).
+[2026-09-28 17:29:43.934674] DRC/LVS/PEX is disabled (check_lvsdrc=True to enable).
+[2026-09-28 17:29:43.934743] Characterization is disabled (using analytical delay models) (analytical_delay=False to simulate).
+[2026-09-28 17:29:43.934814] Words per row: 4
+[2026-09-28 17:29:43.934908] Output files are: 
+[2026-09-28 17:29:43.934979] /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.lvs
+[2026-09-28 17:29:43.935048] /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.sp
+[2026-09-28 17:29:43.935115] /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.v
+[2026-09-28 17:29:43.935182] /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.lib
+[2026-09-28 17:29:43.935249] /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.py
+[2026-09-28 17:29:43.935317] /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.html
+[2026-09-28 17:29:43.935386] /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.log
+[2026-09-28 17:29:43.935452] /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.lef
+[2026-09-28 17:29:43.935518] /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.gds
+[2026-09-28 17:42:19.081125] WARNING: file hierarchy_layout.py: line 642: Could not find pin vdd on sram_32_1024_1rw_tsmc65N_tsmc65N_capped_replica_bitcell_array
+
+[2026-09-28 17:42:19.081870] WARNING: file hierarchy_layout.py: line 642: Could not find pin gnd on sram_32_1024_1rw_tsmc65N_tsmc65N_capped_replica_bitcell_array
+
+[2026-09-28 17:42:19.644117] ** Submodules: 755.7 seconds
+[2026-09-28 17:42:19.687555] ** Placement: 0.0 seconds
+[2026-09-28 22:03:57.042606] ** Routing: 15697.4 seconds
+[2026-09-28 22:03:57.053337] ** Verification: 0.0 seconds
+[2026-09-28 22:03:57.053545] ** SRAM creation: 16453.1 seconds
+[2026-09-28 22:03:57.053653] SP: Writing to /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.sp
+[2026-09-28 22:03:57.693189] ** Spice writing: 0.6 seconds
+[2026-09-28 22:03:57.693380] DELAY: Writing stimulus...
+[2026-09-28 22:04:00.929122] ** DELAY: 3.2 seconds
+[2026-09-28 22:04:01.518913] GDS: Writing to /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.gds
+[2026-09-28 22:04:02.887047] GDS: Writing macro sram_32_1024_1rw_tsmc65N_tsmc65N_precharge_array -> output/sram_32_1024_1rw_tsmc65N_tsmc65N_precharge_array.gds
+[2026-09-28 22:04:02.933094] LEF: Writing macro sram_32_1024_1rw_tsmc65N_tsmc65N_precharge_array -> output/sram_32_1024_1rw_tsmc65N_tsmc65N_precharge_array.lef
+[2026-09-28 22:04:03.051594] GDS: Writing macro sram_32_1024_1rw_tsmc65N_tsmc65N_write_driver_array -> output/sram_32_1024_1rw_tsmc65N_tsmc65N_write_driver_array.gds
+[2026-09-28 22:04:03.071918] LEF: Writing macro sram_32_1024_1rw_tsmc65N_tsmc65N_write_driver_array -> output/sram_32_1024_1rw_tsmc65N_tsmc65N_write_driver_array.lef
+[2026-09-28 22:04:03.088817] GDS: Writing macro sram_32_1024_1rw_tsmc65N_tsmc65N_sense_amp_array -> output/sram_32_1024_1rw_tsmc65N_tsmc65N_sense_amp_array.gds
+[2026-09-28 22:04:03.108830] LEF: Writing macro sram_32_1024_1rw_tsmc65N_tsmc65N_sense_amp_array -> output/sram_32_1024_1rw_tsmc65N_tsmc65N_sense_amp_array.lef
+[2026-09-28 22:04:03.130685] GDS: Writing macro sram_32_1024_1rw_tsmc65N_tsmc65N_capped_replica_bitcell_array -> output/sram_32_1024_1rw_tsmc65N_tsmc65N_capped_replica_bitcell_array.gds
+[2026-09-28 22:04:04.373939] LEF: Writing macro sram_32_1024_1rw_tsmc65N_tsmc65N_capped_replica_bitcell_array -> output/sram_32_1024_1rw_tsmc65N_tsmc65N_capped_replica_bitcell_array.lef
+[2026-09-28 22:04:04.500258] ** GDS: 3.0 seconds
+[2026-09-28 22:04:04.500430] LEF: Writing to /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.lef
+[2026-09-28 22:04:04.520167] ** LEF: 0.0 seconds
+[2026-09-28 22:04:04.520298] LVS: Writing to /home/odutra/OpenRAM/output/sram_32_1024_1rw_tsmc65N.lvs.sp
+[2026-09-28 22:04:05.087954] ** LVS writing: 0.6 seconds
+[2026-09-28 22:04:05.088166] LIB: Characterizing... 

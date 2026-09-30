@@ -143,6 +143,7 @@ class sram():
             gdsname = OPTS.output_path + self.s.name + ".gds"
             debug.print_raw("GDS: Writing to {0}".format(gdsname))
             self.gds_write(gdsname)
+            self.write_macros("output/")
             if OPTS.check_lvsdrc:
                 verify.write_drc_script(cell_name=self.s.name,
                                         gds_name=os.path.basename(gdsname),
@@ -223,3 +224,57 @@ class sram():
             debug.print_raw("Extended Config: Writing to {0}".format(oname))
             self.extended_config_write(oname)
             print_time("Extended Config", datetime.datetime.now(), start_time)
+
+
+
+    def write_macros(self, output_path=None):
+        """Write selected SRAM blocks as independent GDS and LEF macros."""
+
+        if OPTS.netlist_only:
+            return
+
+        if output_path is None:
+            output_path = OPTS.output_path
+
+        os.makedirs(output_path, exist_ok=True)
+
+        macro_names = [
+            "precharge_array",
+            "write_driver_array",
+            "sense_amp_array",
+            "capped_replica_bitcell_array",
+        ]
+
+        def find_macros(design):
+            found = {}
+
+            for inst in design.insts:
+                # A própria instância é um dos macros desejados
+                for macro_name in macro_names:
+                    if inst.mod.name.endswith(macro_name):
+                        found[macro_name] = inst.mod
+
+                # Procura também dentro da hierarquia
+                found.update(find_macros(inst.mod))
+
+            return found
+
+        macros = find_macros(self.s)
+
+        for macro_name in macro_names:
+            if macro_name not in macros:
+                debug.warning("Macro {0} not found.".format(macro_name))
+                continue
+
+            macro = macros[macro_name]
+
+            gdsname = os.path.join(output_path, macro.name + ".gds")
+            lefname = os.path.join(output_path, macro.name + ".lef")
+
+            debug.print_raw("GDS: Writing macro {0} -> {1}".format(
+                macro.name, gdsname))
+            macro.gds_write(gdsname)
+
+            debug.print_raw("LEF: Writing macro {0} -> {1}".format(
+                macro.name, lefname))
+            macro.lef_write(lefname)

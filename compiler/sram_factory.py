@@ -82,6 +82,26 @@ class sram_factory:
         A generic function to create a module with a given module_type.
         The args are passed directly to the module constructor.
         """
+#        # =========================================================================
+#        # INTERCEPTAÇÃO: Força o uso dos arquivos GDS da PDK TSMC65nm
+#        # =========================================================================
+#        from openram import tech
+#        from openram.base import design
+#        from openram import OPTS
+#
+#        # Verifica a tecnologia diretamente pela opção global (OPTS.tech_name)
+#        if OPTS.tech_name == "tsmc65N":
+#            inv_cell = getattr(tech, "inv_cell", "inv")
+#            nand2_cell = getattr(tech, "nand2_cell", "nand2")#
+#
+#            if module_type in ["pinv", "inv"]:
+#                print(f"[CUSTOM PDK TSMC65] -> Carregando GDS estatico: {inv_cell}.gds", flush=True)
+#                return design(inv_cell)
+#            elif module_type in ["pnand2", "nand2"]:
+#                print(f"[CUSTOM PDK TSMC65] -> Carregando GDS estatico: {nand2_cell}.gds", flush=True)
+#                return design(nand2_cell)
+#        # =========================================================================
+
         tech_module_type, tm_overridden = self.get_techmodule_type(module_type)
         user_module_type, um_overridden = self.get_usermodule_type(module_type)
         # print(module_type, tech_module_type, tm_overridden)

@@ -30,3 +30,22 @@ skywater-pdk/
 sky130_fd_bd_sram/
 docker/openram-ubuntu.log
 ciel/
+# ----------------------------------------------------------------------
+# Regras para TSMC 65nm (Proteção de NDA)
+# ----------------------------------------------------------------------
+# Ignorar arquivos de layout binário (GDSII)
+technology/tsmc65N/gds_lib/*.gds
+technology/tsmc65N/gds_lib/*.lef
+technology/tsmc65N/Converter_gds_drawing_pins/*.gds
+technology/tsmc65N/Converter_gds_drawing_pins
+
+# Ignorar tech/tech.py e subir apenas o tech/tech_NDA.py
+technology/tsmc65N/tech/tech.py
+
+# Ignorar mapeamentos de camadas do PDK comercial
+technology/tsmc65N/layers_ORIGINAL.map
+technology/tsmc65N/layers_substitui_pin_para_drawing.map
+
+# Garantir que as pastas permaneçam na estrutura do Git
+!technology/tsmc65N/gds_lib/.gitkeep
+#!technology/tsmc65N/Converter_gds_drawing_pins/.gitkeep

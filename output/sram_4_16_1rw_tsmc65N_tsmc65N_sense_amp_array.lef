@@ -1,0 +1,157 @@
+VERSION 5.4 ;
+NAMESCASESENSITIVE ON ;
+BUSBITCHARS "[]" ;
+DIVIDERCHAR "/" ;
+UNITS
+  DATABASE MICRONS 2000 ;
+END UNITS
+MACRO sram_4_16_1rw_tsmc65N_tsmc65N_sense_amp_array
+   CLASS BLOCK ;
+   SIZE 13.85 BY 8.285 ;
+   SYMMETRY X Y R90 ;
+   PIN data_0
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  5.535 0.0 5.795 0.09 ;
+      END
+   END data_0
+   PIN bl_0
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  5.36 8.145 5.5 8.285 ;
+      END
+   END bl_0
+   PIN br_0
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  6.36 8.145 6.5 8.285 ;
+      END
+   END br_0
+   PIN data_1
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  7.775 0.0 8.035 0.09 ;
+      END
+   END data_1
+   PIN bl_1
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  7.6 8.145 7.74 8.285 ;
+      END
+   END bl_1
+   PIN br_1
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  8.6 8.145 8.74 8.285 ;
+      END
+   END br_1
+   PIN data_2
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  10.015 0.0 10.275 0.09 ;
+      END
+   END data_2
+   PIN bl_2
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  9.84 8.145 9.98 8.285 ;
+      END
+   END bl_2
+   PIN br_2
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  10.84 8.145 10.98 8.285 ;
+      END
+   END br_2
+   PIN data_3
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  12.255 0.0 12.515 0.09 ;
+      END
+   END data_3
+   PIN bl_3
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  12.08 8.145 12.22 8.285 ;
+      END
+   END bl_3
+   PIN br_3
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  13.08 8.145 13.22 8.285 ;
+      END
+   END br_3
+   PIN en
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 7.975 0.09 8.065 ;
+      END
+   END en
+   PIN vdd
+      DIRECTION INOUT ;
+      USE POWER ; 
+      SHAPE ABUTMENT ; 
+      PORT
+         LAYER M3 ;
+         RECT  0.0 2.515 0.14 2.655 ;
+      END
+   END vdd
+   PIN gnd
+      DIRECTION INOUT ;
+      USE GROUND ; 
+      SHAPE ABUTMENT ; 
+      PORT
+         LAYER M3 ;
+         RECT  0.0 4.115 0.14 4.255 ;
+      END
+   END gnd
+   OBS
+   LAYER  M1 ;
+      RECT  0.32 0.32 5.295 0.33 ;
+      RECT  5.295 0.33 6.035 7.965 ;
+      RECT  6.035 0.33 13.53 7.965 ;
+      RECT  6.035 0.32 7.535 0.33 ;
+      RECT  8.275 0.32 9.775 0.33 ;
+      RECT  10.515 0.32 12.015 0.33 ;
+      RECT  12.755 0.32 13.53 0.33 ;
+      RECT  0.32 0.33 0.33 7.735 ;
+      RECT  0.33 0.33 5.295 7.735 ;
+      RECT  0.33 7.735 5.295 7.965 ;
+   LAYER  M2 ;
+      RECT  0.32 0.32 5.16 7.945 ;
+      RECT  0.32 7.945 5.16 7.965 ;
+      RECT  5.16 0.32 5.7 7.945 ;
+      RECT  5.7 0.32 13.53 7.945 ;
+      RECT  5.7 7.945 6.16 7.965 ;
+      RECT  6.7 7.945 7.4 7.965 ;
+      RECT  7.94 7.945 8.4 7.965 ;
+      RECT  8.94 7.945 9.64 7.965 ;
+      RECT  10.18 7.945 10.64 7.965 ;
+      RECT  11.18 7.945 11.88 7.965 ;
+      RECT  12.42 7.945 12.88 7.965 ;
+      RECT  13.42 7.945 13.53 7.965 ;
+   LAYER  M3 ;
+      RECT  0.32 0.32 0.34 2.315 ;
+      RECT  0.34 0.32 13.53 2.315 ;
+      RECT  0.34 2.315 13.53 2.855 ;
+      RECT  0.34 2.855 13.53 7.965 ;
+      RECT  0.32 2.855 0.34 3.915 ;
+      RECT  0.32 4.455 0.34 7.965 ;
+   LAYER  M4 ;
+      RECT  0.32 0.32 13.53 7.965 ;
+   END
+END    sram_4_16_1rw_tsmc65N_tsmc65N_sense_amp_array
+END    LIBRARY

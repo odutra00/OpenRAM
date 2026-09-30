@@ -1,0 +1,246 @@
+VERSION 5.4 ;
+NAMESCASESENSITIVE ON ;
+BUSBITCHARS "[]" ;
+DIVIDERCHAR "/" ;
+UNITS
+  DATABASE MICRONS 2000 ;
+END UNITS
+MACRO sram_4_16_1rw_tsmc65N_tsmc65N_capped_replica_bitcell_array
+   CLASS BLOCK ;
+   SIZE 15.93 BY 45.14 ;
+   SYMMETRY X Y R90 ;
+   PIN rbl_bl_0_0
+      DIRECTION INOUT ;
+      PORT
+         LAYER M2 ;
+         RECT  3.06 0.0 3.16 0.1 ;
+      END
+   END rbl_bl_0_0
+   PIN rbl_br_0_0
+      DIRECTION INOUT ;
+      PORT
+         LAYER M2 ;
+         RECT  4.06 0.0 4.16 0.1 ;
+      END
+   END rbl_br_0_0
+   PIN bl_0_0
+      DIRECTION INOUT ;
+      PORT
+         LAYER M2 ;
+         RECT  5.3 0.0 5.4 0.1 ;
+      END
+   END bl_0_0
+   PIN br_0_0
+      DIRECTION INOUT ;
+      PORT
+         LAYER M2 ;
+         RECT  6.3 0.0 6.4 0.1 ;
+      END
+   END br_0_0
+   PIN bl_0_1
+      DIRECTION INOUT ;
+      PORT
+         LAYER M2 ;
+         RECT  7.54 0.0 7.64 0.1 ;
+      END
+   END bl_0_1
+   PIN br_0_1
+      DIRECTION INOUT ;
+      PORT
+         LAYER M2 ;
+         RECT  8.54 0.0 8.64 0.1 ;
+      END
+   END br_0_1
+   PIN bl_0_2
+      DIRECTION INOUT ;
+      PORT
+         LAYER M2 ;
+         RECT  9.78 0.0 9.88 0.1 ;
+      END
+   END bl_0_2
+   PIN br_0_2
+      DIRECTION INOUT ;
+      PORT
+         LAYER M2 ;
+         RECT  10.78 0.0 10.88 0.1 ;
+      END
+   END br_0_2
+   PIN bl_0_3
+      DIRECTION INOUT ;
+      PORT
+         LAYER M2 ;
+         RECT  12.02 0.0 12.12 0.1 ;
+      END
+   END bl_0_3
+   PIN br_0_3
+      DIRECTION INOUT ;
+      PORT
+         LAYER M2 ;
+         RECT  13.02 0.0 13.12 0.1 ;
+      END
+   END br_0_3
+   PIN rbl_wl_0_0
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 4.335 0.09 4.425 ;
+      END
+   END rbl_wl_0_0
+   PIN wl_0_0
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 5.515 0.09 5.605 ;
+      END
+   END wl_0_0
+   PIN wl_0_1
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 9.055 0.09 9.145 ;
+      END
+   END wl_0_1
+   PIN wl_0_2
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 10.235 0.09 10.325 ;
+      END
+   END wl_0_2
+   PIN wl_0_3
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 13.775 0.09 13.865 ;
+      END
+   END wl_0_3
+   PIN wl_0_4
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 14.955 0.09 15.045 ;
+      END
+   END wl_0_4
+   PIN wl_0_5
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 18.495 0.09 18.585 ;
+      END
+   END wl_0_5
+   PIN wl_0_6
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 19.675 0.09 19.765 ;
+      END
+   END wl_0_6
+   PIN wl_0_7
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 23.215 0.09 23.305 ;
+      END
+   END wl_0_7
+   PIN wl_0_8
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 24.395 0.09 24.485 ;
+      END
+   END wl_0_8
+   PIN wl_0_9
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 27.935 0.09 28.025 ;
+      END
+   END wl_0_9
+   PIN wl_0_10
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 29.115 0.09 29.205 ;
+      END
+   END wl_0_10
+   PIN wl_0_11
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 32.655 0.09 32.745 ;
+      END
+   END wl_0_11
+   PIN wl_0_12
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 33.835 0.09 33.925 ;
+      END
+   END wl_0_12
+   PIN wl_0_13
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 37.375 0.09 37.465 ;
+      END
+   END wl_0_13
+   PIN wl_0_14
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 38.555 0.09 38.645 ;
+      END
+   END wl_0_14
+   PIN wl_0_15
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 42.095 0.09 42.185 ;
+      END
+   END wl_0_15
+   PIN vdd
+      DIRECTION INOUT ;
+      USE POWER ; 
+      SHAPE ABUTMENT ; 
+      PORT
+      END
+   END vdd
+   PIN gnd
+      DIRECTION INOUT ;
+      USE GROUND ; 
+      SHAPE ABUTMENT ; 
+      PORT
+      END
+   END gnd
+   OBS
+   LAYER  M1 ;
+      RECT  0.32 0.32 0.33 4.095 ;
+      RECT  0.33 0.32 15.61 4.095 ;
+      RECT  0.33 4.095 15.61 4.665 ;
+      RECT  0.33 4.665 15.61 44.82 ;
+      RECT  0.32 4.665 0.33 5.275 ;
+      RECT  0.32 5.845 0.33 8.815 ;
+      RECT  0.32 9.385 0.33 9.995 ;
+      RECT  0.32 10.565 0.33 13.535 ;
+      RECT  0.32 14.105 0.33 14.715 ;
+      RECT  0.32 15.285 0.33 18.255 ;
+      RECT  0.32 18.825 0.33 19.435 ;
+      RECT  0.32 20.005 0.33 22.975 ;
+      RECT  0.32 23.545 0.33 24.155 ;
+      RECT  0.32 24.725 0.33 27.695 ;
+      RECT  0.32 28.265 0.33 28.875 ;
+      RECT  0.32 29.445 0.33 32.415 ;
+      RECT  0.32 32.985 0.33 33.595 ;
+      RECT  0.32 34.165 0.33 37.135 ;
+      RECT  0.32 37.705 0.33 38.315 ;
+      RECT  0.32 38.885 0.33 41.855 ;
+      RECT  0.32 42.425 0.33 44.82 ;
+   LAYER  M2 ;
+      RECT  0.32 0.32 15.61 44.82 ;
+   LAYER  M3 ;
+      RECT  0.32 0.32 15.61 44.82 ;
+   LAYER  M4 ;
+      RECT  0.32 0.32 15.61 44.82 ;
+   END
+END    sram_4_16_1rw_tsmc65N_tsmc65N_capped_replica_bitcell_array
+END    LIBRARY

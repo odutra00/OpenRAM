@@ -1,0 +1,58 @@
+[2026-09-03 14:03:23.856722] |==============================================================================|
+[2026-09-03 14:03:23.857058] |=========                      OpenRAM v1.2.49                       =========|
+[2026-09-03 14:03:23.857169] |=========                                                            =========|
+[2026-09-03 14:03:23.857255] |=========               VLSI Design and Automation Lab               =========|
+[2026-09-03 14:03:23.857325] |=========        Computer Science and Engineering Department         =========|
+[2026-09-03 14:03:23.857390] |=========            University of California Santa Cruz             =========|
+[2026-09-03 14:03:23.857453] |=========                                                            =========|
+[2026-09-03 14:03:23.857522] |=========          Usage help: openram-user-group@ucsc.edu           =========|
+[2026-09-03 14:03:23.857620] |=========        Development help: openram-dev-group@ucsc.edu        =========|
+[2026-09-03 14:03:23.857695] |=========                See LICENSE for license info                =========|
+[2026-09-03 14:03:23.857756] |==============================================================================|
+[2026-09-03 14:03:23.857836] ** Start: 09/03/2026 14:03:23
+[2026-09-03 14:03:23.857924] Technology: freepdk45
+[2026-09-03 14:03:23.857993] Total size: 64 bits
+[2026-09-03 14:03:23.858057] Word size: 4
+Words: 16
+Banks: 1
+[2026-09-03 14:03:23.858120] RW ports: 1
+R-only ports: 0
+W-only ports: 0
+[2026-09-03 14:03:23.858183] DRC/LVS/PEX is only run on the top-level design to save run-time (inline_lvsdrc=True to do inline checking).
+[2026-09-03 14:03:23.858243] DRC/LVS/PEX is disabled (check_lvsdrc=True to enable).
+[2026-09-03 14:03:23.858303] Characterization is disabled (using analytical delay models) (analytical_delay=False to simulate).
+[2026-09-03 14:03:23.858367] Words per row: None
+[2026-09-03 14:03:23.858439] Output files are: 
+[2026-09-03 14:03:23.858501] /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.lvs
+[2026-09-03 14:03:23.858562] /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.sp
+[2026-09-03 14:03:23.858621] /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.v
+[2026-09-03 14:03:23.858680] /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.lib
+[2026-09-03 14:03:23.858739] /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.py
+[2026-09-03 14:03:23.858798] /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.html
+[2026-09-03 14:03:23.858870] /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.log
+[2026-09-03 14:03:23.858937] /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.lef
+[2026-09-03 14:03:23.858998] /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.gds
+[2026-09-03 14:03:24.417488] ** Submodules: 0.5 seconds
+[2026-09-03 14:03:24.422911] ** Placement: 0.0 seconds
+[2026-09-03 14:03:45.523157] ** Routing: 21.1 seconds
+[2026-09-03 14:03:45.530325] ** Verification: 0.0 seconds
+[2026-09-03 14:03:45.530566] ** SRAM creation: 21.7 seconds
+[2026-09-03 14:03:45.530690] SP: Writing to /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.sp
+[2026-09-03 14:03:45.559148] ** Spice writing: 0.0 seconds
+[2026-09-03 14:03:45.559332] DELAY: Writing stimulus...
+[2026-09-03 14:03:45.644148] ** DELAY: 0.1 seconds
+[2026-09-03 14:03:45.653991] GDS: Writing to /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.gds
+[2026-09-03 14:03:45.706523] ** GDS: 0.1 seconds
+[2026-09-03 14:03:45.706739] LEF: Writing to /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.lef
+[2026-09-03 14:03:45.713233] ** LEF: 0.0 seconds
+[2026-09-03 14:03:45.713422] LVS: Writing to /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.lvs.sp
+[2026-09-03 14:03:45.723657] ** LVS writing: 0.0 seconds
+[2026-09-03 14:03:45.723867] LIB: Characterizing... 
+[2026-09-03 14:03:46.356358] ** Characterization: 0.6 seconds
+[2026-09-03 14:03:46.356727] Config: Writing to /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.py
+[2026-09-03 14:03:46.356842] ** Config: 0.0 seconds
+[2026-09-03 14:03:46.367371] Datasheet: Writing to /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.html
+[2026-09-03 14:03:46.369106] ** Datasheet: 0.0 seconds
+[2026-09-03 14:03:46.369224] Verilog: Writing to /home/odutra/OpenRAM/output/sram_4_16_1rw_freepdk45.v
+[2026-09-03 14:03:46.369501] ** Verilog: 0.0 seconds
+[2026-09-03 14:03:46.369964] ** End: 22.5 seconds

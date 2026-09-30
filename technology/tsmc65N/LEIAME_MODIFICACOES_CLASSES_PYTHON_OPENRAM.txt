@@ -1,0 +1,390 @@
+Obs: Usar o OpenRAM requer a criaçção de algumas celulas full custom.
+Para referencia, utilize a bliblioteca cadence sram_tsmc65_metal_pins.
+Ou veja na pasta $OPENRAM_HOME/../technology/tsmc65N/gds_lib o layout feito.
+Faça os layouts de forma simlar. 
+
+Em tese é possível , no tech.py criado para a tecnologia, interpretar pinos do metal 
+em questao com proposito pino (padrão do PVS para LVS). No entanto, eu não consegui.
+O OpenRAM continuou requerendo esses pinos no metal em questão, com propósito drawing.
+Por isso, é importante modificar o layer map da tecnologia para se ter uma versão
+modificando o layer de metal com propósito pino para o mesmo layer de metal, porém
+com propósito drawing. Isso está feito em 
+technology/tsmc65N/layers_substitui_pin_para_drawing.map
+Utilize esse mapa modificado para exportar os gds do Virtuoso para o OpenRAM.
+Pelo menos essas células devem ser criadas, a menos que queira criar pythons que 
+descrevam o desenho de cada uma.
+dummy_cell_1rw (Full Custom)
+replica_cell_1rw (Full Custom)
+cell_1rw (Full Custom)
+write_driver (Full Custom)
+precharge (Full Custom)
+sense_amp (Full Custom)
+and2 (AND2D do PDK)
+and3 (AN3D0 do PDK)
+nand2 (ND2D0 do PDK)
+dff (DFQD1 do PDK)
+inv (INVD0 do PDK)
+
+Durante o uso do OpenRAM, detectei que os roteamentos geram muitos erros de DRC.
+Eu utilizei como base o projeto freePDK45. Memso colocando as regras de DRC da
+tecnologia utilizada (TSMC65N) no tech.py, nao consegui fazer parar a geração
+de erros de DRC de espaçamento, edges, etc.
+Resolvi então partir para outra abordagem.
+O OpenRAM gera uma netlist SPICE extremamente hierarquizada, o que torna fácil sua
+conversão para verilog estrtutural., tornando possível o roteamento no Innovus.
+Assim, mantive os arrays de componentes analógicos que ele cria, fazendo o override
+das classes:
+├── pand2.py
+├── pand3.py
+├── pinv.py
+├── pnand2.py
+├── precharge.py
+├── tsmc65N_bitcell_array.py
+├── tsmc65N_bitcell_base_array.py
+├── tsmc65N_capped_replica_bitcell_array.py
+├── tsmc65N_dummy_array.py
+├── tsmc65N_precharge_array.py
+├── tsmc65N_replica_column.py
+├── tsmc65N_sense_amp_array.py
+└── tsmc65N_write_driver_array.py
+As 5 primeiras apenas dizem ao OpenRAM para usar minhas c-elulas digitais full 
+custom, além do precharge pois o padrao no freepdk45 é crias os gds dessas células 
+pelo python parametrizado.
+As demais já são os arrays das células analógicas necessárias para o acionamento
+da SRAM. Então modifiquei essas células em technology/tsmc65/custom para que o 
+OpenRAM não posicionasse vias, que é o grande gerador de erros de DRC.
+A ligação das celulas internas de cada vetor é feita por Abutsmen e roteamentos de
+curto circuito de vdd e gnd são feitos por trilhas que interconectam vias previamente
+posicionadas no layout de cada celula.
+Assim, lembre-se:
+- O override das celulas python que desenha 
+alguns dos blocos parte do princípio que o layout foi feito daquele jeito.
+O override das celulas python é feito na pasta 
+$OPENRAM_HOME/../technology/$SUA_TECNOLOGIA/custom
+Utilize o projeto da tecnologia tsmc65N como referencia.
+
+Par a a transofrmação do SPICE em Verilog estrutural, criei um script python 
+technology/tsmc65N/spice_to_structural_verilog.py
+Leia as instruções de como usá-lo no proprio arquivo.
+Basciamente ele aceita como argumento uma netlist spice. Dentro dele deve ser configurado
+as instancias que devem ser descartadas (serão feitas pelo Innovus) e instâncias
+que devem sair de dentro de uma instancia maior e ir pro topo, de forma que o Innovus
+faça o roteamento.
+
+
+
+#Uso basico do OpenRAM
+1) Copie o OpenRAM da pasta app para sua área de trabalho.
+
+2) Entre na pasta copiada.
+
+3) No terminal, entre: 
+export SUA_TECNOLOGIA=Nome da tecnologia (pasta que ficara em OpenRAM/technology/
+export OPENRAM_HOME=/home/$USER/OpenRAM/compiler
+export OPENRAM_TECH=/home/$USER/OpenRAM/technology/$SUA_TECNOLOGIA
+nix develop
+export OPENRAM_HOME=/home/$USER/OpenRAM/compiler
+export OPENRAM_TECH=/home/$USER/OpenRAM/technology/$SUA_TECNOLOGIA
+
+4) Copie o arquivo de configuração criado para o design kit TSMC65N.
+O fluxo já está melhor por ele. 
+Esse projeto já faz o override de várias classes python originais do OpenRAM em
+OPENRAM_HOME/modules na pasta technology/tsmc65N/custom
+para o uso correto dos layouts criados full custom:
+'dummy_cell_1rw', 
+'replica_cell_1rw', 
+'cell_1rw', 
+'write_driver', 
+'precharge', 
+'sense_amp',
+pinv,
+pand2
+pand3
+pnand2
+dff
+
+O override das classes:
+├── pand2.py
+├── pand3.py
+├── pinv.py
+├── pnand2.py
+├── precharge.py
+apenas faz com que o OpenRAM utilize os gds full custom fornecidos delas e nao celulas python 
+parametrizadas em $OPENRAM_HOME/modules.
+O Override das classes
+├── tsmc65N_bitcell_array.py
+├── tsmc65N_bitcell_base_array.py
+├── tsmc65N_capped_replica_bitcell_array.py
+├── tsmc65N_dummy_array.py
+├── tsmc65N_precharge_array.py
+├── tsmc65N_replica_column.py
+├── tsmc65N_sense_amp_array.py
+└── tsmc65N_write_driver_array.py
+já deixa as classes herdando de lef para exportacao dos lefdas mesmas pelo 
+proprio OpenRAM dessas celulas (originalmente ele só gera gds e lef do 
+arquivo topo - memória completa). Assim, poderemos utilizar esses lef no innovus,
+fazendo muitos dos roteamentos por ele, evitando os erros de DRC gerados pelo OpenRAM.
+
+
+Para a geração dos lef e gds dos submodulos (originalmente ele só gera gds 
+e lef do arquivo topo - memória completa), foi modificado $OPEN_RAM/sram.py
+
+
+
+5) No terminal do nix develop, rode: 
+python3 sram_compiler.py config_tsmc65
+
+
+
+
+
+
+
+
+
+#########################################Design full custon em geral ##############
+Serão necessários pelo menos (as células 2rw são necessárias para fazer memoria dual gate.
+├── cell_1rw.sp
+├── cell_2rw.sp
+├── dff.sp
+├── dummy_cell_1rw.sp
+├── dummy_cell_2rw.sp
+├── replica_cell_1rw.sp
+├── replica_cell_2rw.sp
+├── sense_amp.sp
+├── tri_gate.sp (não usei)
+├── write_driver.sp
+Se olhar com atencao verá que no freepdk45, dummy_cell_* é igual a sua cell equivalente.
+Use os mesmos nomes de pinos (incluindo o case). O mesmo para os nomes dos circuitos.
+
+Lembre-se que o layout deve ter um prBundary similar a standar cell:
+
+Vertical:
+Y = 2.00 µm  +-----------------------------------+  <-- Borda Superior do Metal VDD
+                    |  Trilha VDD (Metal 1)             |
+=================== Y = 1.90 µm =================================== BORDA DO prBoundary
+                    |  Trilha VDD (Metal 1)             |
+       Y = 1.80 µm  +-----------------------------------+  <-- Borda Inferior do Metal VDD
+                    |                                   |
+                    |       Transistores da Célula      |
+                    |                                   |
+       Y = 0.20 µm  +-----------------------------------+  <-- Borda Superior do Metal GND
+                    |  Trilha GND (Metal 1)             |
+=================== Y = 0.10 µm =================================== BORDA DO prBoundary
+                    |  Trilha GND (Metal 1)             |
+       Y = 0.00 µm  +-----------------------------------+  <-- Borda Inferior do Metal GND
+
+
+Horizontal:
+
+X = 0 (Borda Esquerda)                                     X = Largura (Borda Direita)
+  |                                                                 |
+  V                                                                 V
+  +-----------------------------------------------------------------+
+  |=================== Metal da WL (Vai até a borda) ===============| <-- Conecta na vizinha
+  |                                                                 |
+  |    <-- Folga --> | BL |                      | BR | <-- Folga > | <-- Bitlines recuadas
+  |                  |    |                      |    |             |
+  +-----------------------------------------------------------------+
+
+
+
+Os nomes dos pinos devem ser iguais aos relatados nas células do freepdk45, incluindo a camada de metal.
+A geometria do pino deve ser obrigatoriamente retangular. No caso de células com rails de vdd e gnd (dff, inv, nand2, etc, o rail deve ser retangular (verifique se não há um stub no referido metal. Se houver, faça um retangulo do metal em questão pegando o rail inteiro, caso contrário haverá problemas de roteamento dos pinos de alimentação.
+Tanto o label do pino, quanto a geometria que o contém, devem ser obrigatoriamente do Metal em questão, mas tem que ser drawing. Não pode ser pino.  Isso atrapalha porque para o lvs funcionar no virtuoso pelo PVS, pinos tem que ser do tipo pin já que no esquemático a gente coloca pinos também.
+
+
+
+########################## Arquivos SPICE #########################
+CIW e Virtuoso não geram a netlist SPICE do circuito. Se vc mandar exportar, tem a opçção CDL que vem com muitos parâmetros que podem dar problema no parser do OpenRAM. Limpe-os de forma a ficarem iguais aos da pasta sp_lib do freepdk45. Lembre-se também de colocar os pinos na mesma ordem dos arquivos do freepdk45 (olhe as netslists aspice do freepdk45 em technology/freepdk45/sp_lib.
+Melhor do que esportar em CDL é pegar a netlist gerada no LVS.
+
+############################ Arquivos GDS ########################
+Para exportacao pelo virtuoso acesse a aba More Options e:
+--> flatten Pcells, incluindo vias e pcells. 
+--> Do not Preserve Pcell Pins
+--> Flatten Vias
+--> Output paths as polygons
+--> Merge connected path segs
+
+Isso garantirá que haja apenas uma prBoundary na célula exportada (obrigatório para o  OpenRAM) e que sejam gerados edges nos roteamentos.
+
+##################################################################
+
+
+
+############################################# Modificações no OpenRAM ###########################################
+##Modificacoes compiler....
+#####Foram feitas algumas modificações para depuração. 
+Por causa disso, ao rodar o OpenRAM, pode aparecer "Dirty" indicando que a engine do OpenRAM foi modificada.
+Toda vez que ele é rodado ele verifica com o github do projeto.
+As mudanças estão listadas abaixo.
+
+# Histórico de modificações:
+
+Arquivo $OPEN_RAM/sram.py
+Após 
+        self.gds_write(gdsname)
+foi adicionada a linha:             
+        self.write_macros("output/")
+
+E, ao final do arquivo, foi adicionada a funcao write_macros
+
+    def write_macros(self, output_path=None):
+        """Write selected SRAM blocks as independent GDS and LEF macros."""
+
+        if OPTS.netlist_only:
+            return
+
+        if output_path is None:
+            output_path = OPTS.output_path
+
+        os.makedirs(output_path, exist_ok=True)
+
+        macro_names = [
+            "precharge_array",
+            "write_driver_array",
+            "sense_amp_array",
+            "capped_replica_bitcell_array",
+        ]
+
+        def find_macros(design):
+            found = {}
+
+            for inst in design.insts:
+                # A própria instância é um dos macros desejados
+                for macro_name in macro_names:
+                    if inst.mod.name.endswith(macro_name):
+                        found[macro_name] = inst.mod
+
+                # Procura também dentro da hierarquia
+                found.update(find_macros(inst.mod))
+
+            return found
+
+        macros = find_macros(self.s)
+
+        for macro_name in macro_names:
+            if macro_name not in macros:
+                debug.warning("Macro {0} not found.".format(macro_name))
+                continue
+
+            macro = macros[macro_name]
+
+            gdsname = os.path.join(output_path, macro.name + ".gds")
+            lefname = os.path.join(output_path, macro.name + ".lef")
+
+            debug.print_raw("GDS: Writing macro {0} -> {1}".format(
+                macro.name, gdsname))
+            macro.gds_write(gdsname)
+
+            debug.print_raw("LEF: Writing macro {0} -> {1}".format(
+                macro.name, lefname))
+            macro.lef_write(lefname)
+
+
+            
+
+arquivo: /home/odutra/OpenRAM_metais/compiler/gdsMill/gdsMill/gds2writer.py
+linha 457 mudado :
+        if(thisText.coordinates!=""):       para isso           if(thisNode.coordinates!=""):
+linha 460:
+            for coordinate in thisText.coordinates:    para       for coordinate in thisNode.coordinates:
+
+
+
+
+sram_factory para usar standard cell:
+linhas 85 a 103: inserido:
+        # =========================================================================
+        # INTERCEPTAÇÃO: Força o uso dos arquivos GDS da PDK TSMC65nm
+        # =========================================================================
+        from openram import tech
+        from openram.base import design
+        from openram import OPTS
+
+        # Verifica a tecnologia diretamente pela opção global (OPTS.tech_name)
+        if OPTS.tech_name == "tsmc65N":
+            inv_cell = getattr(tech, "inv_cell", "inv")
+            nand2_cell = getattr(tech, "nand2_cell", "nand2")
+
+            if module_type in ["pinv", "inv"]:
+                print(f"[CUSTOM PDK TSMC65] -> Carregando GDS estatico: {inv_cell}.gds", flush=True)
+                return design(inv_cell)
+            elif module_type in ["pnand2", "nand2"]:
+                print(f"[CUSTOM PDK TSMC65] -> Carregando GDS estatico: {nand2_cell}.gds", flush=True)
+                return design(nand2_cell)
+        # =========================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+arquivo: capped_replica_bitcell_array.py
+Adicionado depuracao com prints da linha 456 a 461
+Adicionado depuracao com prints da linha 357 a 364
+
+arquivo: hierarchy_layout.py
+Adicionado deupracao: 1594 a 1596
+
+
+
+
+
+arquivo: compiler/gdsMill/gdsMill/vlsiLayout.py
+adicionado de 762 a 765
+print("DEBUG LABEL LPP =", lpp)
+for label in labels:
+    print("DEBUG LABEL =", label.textString,
+          "coord =", label.coordinates)
+
+
+
+arquivo: compiler/debug.py
+Comentada linha assert return_value == 0
+para forçar geração de gds mesmo com erro no processo.
+
+
+arquivo: compiler/router/signal_escape_router.py
+linha 71 (continue) adicionada
+
+
+
+arquivo: compiler/router/supply_router.py
+linha 85 (coninue) adicionada
+
+arquivo:sram_compiler.py
+adicionadas as linhas 45 a 55
+#Adicionado por Odilon
+# --- FORÇA BRUTA PARA DESATIVAR XYCE / CARACTERIZAÇÃO ---
+from openram import OPTS
+OPTS.analytical_delay = False
+OPTS.characterize = False
+OPTS.simulation = False
+
+# Remove qualquer menção a lib/delay das extensões internas do compilador
+if "lib" in OPTS.output_exts:
+    OPTS.output_exts.remove("lib")
+
+
+linha 66 foi removido "lib" da lista.
+
+
+o freepdk45 não usa standard cells prontas para inv e nand2. Se quiser utilizar as suas, terão que ser criados arquivos ensinando o OpenRAM a tratar essas celulas :
+-> technology/tsmc65N/modules/custom_inv.py
+-> technology/tsmc65N/modules/custom_nand2.py
+
+Apesar de criar esses arquivos, não onsegui fazer o OpenRAM utilizar meus layouts fullcustom para essas células.
+
+
+
+
+
+

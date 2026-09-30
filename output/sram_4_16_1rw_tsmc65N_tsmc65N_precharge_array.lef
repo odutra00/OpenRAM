@@ -1,0 +1,126 @@
+VERSION 5.4 ;
+NAMESCASESENSITIVE ON ;
+BUSBITCHARS "[]" ;
+DIVIDERCHAR "/" ;
+UNITS
+  DATABASE MICRONS 2000 ;
+END UNITS
+MACRO sram_4_16_1rw_tsmc65N_tsmc65N_precharge_array
+   CLASS BLOCK ;
+   SIZE 13.85 BY 1.675 ;
+   SYMMETRY X Y R90 ;
+   PIN bl_0
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  3.12 1.535 3.26 1.675 ;
+      END
+   END bl_0
+   PIN br_0
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  4.12 1.535 4.26 1.675 ;
+      END
+   END br_0
+   PIN bl_1
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  5.36 1.535 5.5 1.675 ;
+      END
+   END bl_1
+   PIN br_1
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  6.36 1.535 6.5 1.675 ;
+      END
+   END br_1
+   PIN bl_2
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  7.6 1.535 7.74 1.675 ;
+      END
+   END bl_2
+   PIN br_2
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  8.6 1.535 8.74 1.675 ;
+      END
+   END br_2
+   PIN bl_3
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  9.84 1.535 9.98 1.675 ;
+      END
+   END bl_3
+   PIN br_3
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  10.84 1.535 10.98 1.675 ;
+      END
+   END br_3
+   PIN bl_4
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  12.08 1.535 12.22 1.675 ;
+      END
+   END bl_4
+   PIN br_4
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  13.08 1.535 13.22 1.675 ;
+      END
+   END br_4
+   PIN en_bar
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 1.375 0.14 1.515 ;
+      END
+   END en_bar
+   PIN vdd
+      DIRECTION INOUT ;
+      USE POWER ; 
+      SHAPE ABUTMENT ; 
+      PORT
+         LAYER M3 ;
+         RECT  0.0 0.505 0.14 0.645 ;
+      END
+   END vdd
+   OBS
+   LAYER  M1 ;
+      RECT  0.32 0.32 0.38 1.135 ;
+      RECT  0.38 0.32 13.53 1.135 ;
+      RECT  0.38 1.135 13.53 1.355 ;
+   LAYER  M2 ;
+      RECT  0.32 0.32 2.92 1.335 ;
+      RECT  0.32 1.335 2.92 1.355 ;
+      RECT  2.92 0.32 3.46 1.335 ;
+      RECT  3.46 0.32 13.53 1.335 ;
+      RECT  3.46 1.335 3.92 1.355 ;
+      RECT  4.46 1.335 5.16 1.355 ;
+      RECT  5.7 1.335 6.16 1.355 ;
+      RECT  6.7 1.335 7.4 1.355 ;
+      RECT  7.94 1.335 8.4 1.355 ;
+      RECT  8.94 1.335 9.64 1.355 ;
+      RECT  10.18 1.335 10.64 1.355 ;
+      RECT  11.18 1.335 11.88 1.355 ;
+      RECT  12.42 1.335 12.88 1.355 ;
+      RECT  13.42 1.335 13.53 1.355 ;
+   LAYER  M3 ;
+      RECT  0.32 0.845 0.34 1.355 ;
+      RECT  0.34 0.32 13.53 0.845 ;
+      RECT  0.34 0.845 13.53 1.355 ;
+   LAYER  M4 ;
+      RECT  0.32 0.32 13.53 1.355 ;
+   END
+END    sram_4_16_1rw_tsmc65N_tsmc65N_precharge_array
+END    LIBRARY

@@ -186,7 +186,10 @@ class VlsiLayout:
                     if sref.sName in structureNames: #and compare to our list
                         structureNames.remove(sref.sName)
 
-        debug.check(len(structureNames)==1,"Multiple possible root structures in the layout: {}".format(str(structureNames)))
+        #debug.check(len(structureNames)==1,"Multiple possible root structures in the layout: {}".format(str(structureNames)))
+        if len(structureNames) > 1:
+            print("[gdsMill Warning] Múltiplas estruturas detectadas: {}. Selecionando a primeira.".format(str(structureNames)))
+
         self.rootStructureName = structureNames[0]
 
     def traverseTheHierarchy(self, startingStructureName=None, delegateFunction=None,

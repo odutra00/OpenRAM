@@ -1,0 +1,150 @@
+VERSION 5.4 ;
+NAMESCASESENSITIVE ON ;
+BUSBITCHARS "[]" ;
+DIVIDERCHAR "/" ;
+UNITS
+  DATABASE MICRONS 2000 ;
+END UNITS
+MACRO sram_4_16_1rw_tsmc65N_tsmc65N_write_driver_array
+   CLASS BLOCK ;
+   SIZE 13.85 BY 7.435 ;
+   SYMMETRY X Y R90 ;
+   PIN data_0
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  5.715 0.0 5.815 0.1 ;
+      END
+   END data_0
+   PIN data_1
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  7.955 0.0 8.055 0.1 ;
+      END
+   END data_1
+   PIN data_2
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  10.195 0.0 10.295 0.1 ;
+      END
+   END data_2
+   PIN data_3
+      DIRECTION INPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  12.435 0.0 12.535 0.1 ;
+      END
+   END data_3
+   PIN bl_0
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  5.36 7.295 5.5 7.435 ;
+      END
+   END bl_0
+   PIN br_0
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  6.36 7.295 6.5 7.435 ;
+      END
+   END br_0
+   PIN bl_1
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  7.6 7.295 7.74 7.435 ;
+      END
+   END bl_1
+   PIN br_1
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  8.6 7.295 8.74 7.435 ;
+      END
+   END br_1
+   PIN bl_2
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  9.84 7.295 9.98 7.435 ;
+      END
+   END bl_2
+   PIN br_2
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  10.84 7.295 10.98 7.435 ;
+      END
+   END br_2
+   PIN bl_3
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  12.08 7.295 12.22 7.435 ;
+      END
+   END bl_3
+   PIN br_3
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER M2 ;
+         RECT  13.08 7.295 13.22 7.435 ;
+      END
+   END br_3
+   PIN en
+      DIRECTION INPUT ;
+      PORT
+         LAYER M1 ;
+         RECT  0.0 0.43 0.14 0.57 ;
+      END
+   END en
+   PIN vdd
+      DIRECTION INOUT ;
+      USE POWER ; 
+      SHAPE ABUTMENT ; 
+      PORT
+         LAYER M3 ;
+         RECT  0.0 4.855 0.14 4.995 ;
+      END
+   END vdd
+   PIN gnd
+      DIRECTION INOUT ;
+      USE GROUND ; 
+      SHAPE ABUTMENT ; 
+      PORT
+         LAYER M3 ;
+         RECT  0.0 4.18 0.14 4.32 ;
+      END
+   END gnd
+   OBS
+   LAYER  M1 ;
+      RECT  0.32 0.81 0.38 7.115 ;
+      RECT  0.38 0.32 13.53 0.81 ;
+      RECT  0.38 0.81 13.53 7.115 ;
+   LAYER  M2 ;
+      RECT  0.32 0.32 5.16 7.095 ;
+      RECT  0.32 7.095 5.16 7.115 ;
+      RECT  5.16 0.32 5.7 7.095 ;
+      RECT  5.7 0.32 13.53 7.095 ;
+      RECT  5.7 7.095 6.16 7.115 ;
+      RECT  6.7 7.095 7.4 7.115 ;
+      RECT  7.94 7.095 8.4 7.115 ;
+      RECT  8.94 7.095 9.64 7.115 ;
+      RECT  10.18 7.095 10.64 7.115 ;
+      RECT  11.18 7.095 11.88 7.115 ;
+      RECT  12.42 7.095 12.88 7.115 ;
+      RECT  13.42 7.095 13.53 7.115 ;
+   LAYER  M3 ;
+      RECT  0.32 5.195 0.34 7.115 ;
+      RECT  0.34 0.32 13.53 4.655 ;
+      RECT  0.34 4.655 13.53 5.195 ;
+      RECT  0.34 5.195 13.53 7.115 ;
+      RECT  0.32 0.32 0.34 3.98 ;
+      RECT  0.32 4.52 0.34 4.655 ;
+   LAYER  M4 ;
+      RECT  0.32 0.32 13.53 7.115 ;
+   END
+END    sram_4_16_1rw_tsmc65N_tsmc65N_write_driver_array
+END    LIBRARY
