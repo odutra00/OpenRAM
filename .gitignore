@@ -43,8 +43,7 @@ technology/tsmc65N/Converter_gds_drawing_pins
 technology/tsmc65N/tech/tech.py
 
 # Ignorar mapeamentos de camadas do PDK comercial
-technology/tsmc65N/layers_ORIGINAL.map
-technology/tsmc65N/layers_substitui_pin_para_drawing.map
+technology/tsmc65N/*.map
 
 # Garantir que as pastas permaneçam na estrutura do Git
 !technology/tsmc65N/gds_lib/.gitkeep
