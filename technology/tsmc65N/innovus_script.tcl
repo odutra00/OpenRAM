@@ -12,7 +12,7 @@ puts "--> (0/11) Carregando Netlist, LEFs e Design para a Memória..."
 
 #FloorPlan
 #Core Utilization in percentage
-set ASPECT_RATIO 2.0
+set ASPECT_RATIO 1.35 
 set CORE_UTILIZATION 0.6
 set MARGIN_LEFT 20
 set MARGIN_BOTTOM 20
@@ -45,12 +45,12 @@ set LIB_FILE    "$PDK_DIR/libs/tcbn65lptc.lib"
 set CAP_TABLE   "$PDK_DIR/captables/cln65lp_1p09m+alrdl_top2_typical.captable"
 set LEF_FILES	{
     /apps/PDKs/Cadence/TSMC65/Digital/lefs/tcbn65lp_9lmT2.lef
-    /home/odutra/Work/TSMC65_1p9m_6x1z1u/lefs_SRAM/sram_32_1024_1rw_tsmc65N_tsmc65N_capped_replica_bitcell_array.lef
-    /home/odutra/Work/TSMC65_1p9m_6x1z1u/lefs_SRAM/sram_32_1024_1rw_tsmc65N_tsmc65N_precharge_array.lef
-    /home/odutra/Work/TSMC65_1p9m_6x1z1u/lefs_SRAM/sram_32_1024_1rw_tsmc65N_tsmc65N_sense_amp_array.lef
-    /home/odutra/Work/TSMC65_1p9m_6x1z1u/lefs_SRAM/sram_32_1024_1rw_tsmc65N_tsmc65N_write_driver_array.lef
+    /home/odutra/Work/TSMC65_1p9m_6x1z1u/lefs_SRAM/sram_32_1024_1rw_tsmc65N/sram_32_1024_1rw_tsmc65N_tsmc65N_capped_replica_bitcell_array.lef
+    /home/odutra/Work/TSMC65_1p9m_6x1z1u/lefs_SRAM/sram_32_1024_1rw_tsmc65N/sram_32_1024_1rw_tsmc65N_tsmc65N_precharge_array.lef
+    /home/odutra/Work/TSMC65_1p9m_6x1z1u/lefs_SRAM/sram_32_1024_1rw_tsmc65N/sram_32_1024_1rw_tsmc65N_tsmc65N_sense_amp_array.lef
+    /home/odutra/Work/TSMC65_1p9m_6x1z1u/lefs_SRAM/sram_32_1024_1rw_tsmc65N/sram_32_1024_1rw_tsmc65N_tsmc65N_write_driver_array.lef
 }
-set VERILOG_PROJETO "lefs_SRAM/sram_32_1024_1rw_tsmc65N.v"
+set VERILOG_PROJETO "lefs_SRAM/sram_32_1024_1rw_tsmc65N/sram_32_1024_1rw_tsmc65N.v"
 set CELULA_TOPO "sram_32_1024_1rw_tsmc65N"
 set ARQUIVO_SDC "lefs_SRAM/SRAM.sdc"
 set POWER_NET "vdd"
@@ -194,9 +194,10 @@ puts "--> (2/11) Criando o Floorplan (Aspect Ratio H/W em função das macros)..
 
 # -r <aspect_ratio> <utilization> <margin_left> <margin_bottom> <margin_right> <margin_top>
 # Ratio H/W = 2.0 (Altura = 2x Largura), Utilização = 60%, Margens de 20um para o Ring
-# floorPlan -r $ASPECT_RATIO $CORE_UTILIZATION $MARGIN_LEFT $MARGIN_BOTTOM $MARGIN_RIGHT $MARGIN_TOP
+floorPlan -r $ASPECT_RATIO $CORE_UTILIZATION $MARGIN_LEFT $MARGIN_BOTTOM $MARGIN_RIGHT $MARGIN_TOP
 
 # TODO Tentar automatizar o floorplan pelo aspect ratio considerando H e W das macros
+# é dificil pq a razao de aspecto da celula capped_replica_bitcell_array muda de acordo com a memoria.
 # --- a) Bitcell Array (Top Right Corner colado no Top Right do Floorplan)
 set bitcellInst [findInstByCellPattern "capped_replica_bitcell_array"]
 # Pega a largura (box_w) e altura (box_h) da célula diretamente do DB do Innovus
@@ -230,7 +231,7 @@ set largura_digital 15
 set aspect_ratio [expr {$altura_macros / ($largura_digital + $largura_macros)}]
 
 # -r <aspect_ratio> <utilization> <margin_left> <margin_bottom> <margin_right> <margin_top>
-floorPlan -r $aspect_ratio $CORE_UTILIZATION $MARGIN_LEFT $MARGIN_BOTTOM $MARGIN_RIGHT $MARGIN_TOP
+# floorPlan -r $aspect_ratio $CORE_UTILIZATION $MARGIN_LEFT $MARGIN_BOTTOM $MARGIN_RIGHT $MARGIN_TOP
 
 puts stdout  "H= $altura_macros , W= $largura_macros "
 puts stdout "FloorPlan --> AspectRatio $aspect_ratio , CoreUtilization = $CORE_UTILIZATION"
